@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>rockpaperscissors</title>
+    <script>
+        function getComputerChoice() {
+            randomNumber = Math.floor(Math.random() * 3);
+            switch (randomNumber) {
+                case 0:
+                    return "rock";
+                    break;
+                case 1:
+                    return "paper";
+                    break;
+                case 2:
+                    return "scissors";
+                    break;
+            }
+        }
+
+        function getHumanChoice() {
+            let humanChoice = prompt("Enter (rock, paper, or scissors): ");
+            return humanChoice.toLowerCase();
+        }
+
+        let humanScore = 0;
+        let computerScore = 0;
+
+        function playRound(humanChoice, computerChoice) {
+            if (humanChoice == computerChoice){
+                console.log("It's a tie!");
+            } else if ((humanChoice == "rock" && computerChoice == "scissors") || (humanChoice == "paper" && computerChoice == "rock") || (humanChoice == "scissors" && computerChoice == "paper")) {
+                console.log("You won! " + humanChoice + " beats " + computerChoice + "!");
+                humanScore++;
+            } else if ((humanChoice == "rock" && computerChoice == "paper") || (humanChoice == "paper" && computerChoice == "scissors") || (humanChoice == "scissors" && computerChoice == "rock")) {
+                console.log("You lost! " + computerChoice + " beats " + humanChoice + "!");
+                computerScore++;
+            }
+        }
+
+        function playGame() {
+            let humanSelection = getHumanChoice();
+            let computerSelection = getComputerChoice();
+            playRound(humanSelection, computerSelection);
+
+            humanSelection = getHumanChoice();
+            computerSelection = getComputerChoice();
+            playRound(humanSelection, computerSelection);
+
+            humanSelection = getHumanChoice();
+            computerSelection = getComputerChoice();
+            playRound(humanSelection, computerSelection);
+
+            humanSelection = getHumanChoice();
+            computerSelection = getComputerChoice();
+            playRound(humanSelection, computerSelection);
+
+            humanSelection = getHumanChoice();
+            computerSelection = getComputerChoice();
+            playRound(humanSelection, computerSelection);
+
+            if (humanScore > computerScore) {
+                console.log("You won! Congrats on winning against the bot with a score of " + humanScore + "-" + computerScore + ".");
+            } else if (humanScore < computerScore) {
+                console.log("You Lost! Unfortunately you've lost agains the bot with a score of " + humanScore + "-" + computerScore + ".");
+            }
+        }
+
+        playGame();
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
